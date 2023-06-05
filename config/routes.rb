@@ -1,6 +1,14 @@
 Rails.application.routes.draw do
+ 
   devise_for :users
-  root to: "homes#top"
+  root to: 'homes#top'
+  
+  resources :post_images, only:[:new, :index, :show]
+  #上の記述で以下のルーティングが生成される。 
+  # get 'post_images/new'
+  # get 'post_images/index'
+  # get 'post_images/show'
+  
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
 get 'homes/about' => 'homes#about' , as: 'about'
